@@ -13,7 +13,8 @@ Starting at time 0 and at 10 second intervals, a major conflagration is set at a
 The truck starts at a random point in the map. If the truck stops within 10 meters of a burning obstacle, it sets the state to extinguished.
 
 A snapshot of the firetruck extinguishing fire is shown below:
-![environment_snapshot](https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/blob/main/media/environment_snapshot.png)
+
+![environment_snapshot](https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/e7ace01e-bc20-4d29-9193-a0c8ed147fb2)
 
 
 ## Planners used:
