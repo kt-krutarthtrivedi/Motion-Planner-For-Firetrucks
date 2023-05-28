@@ -1,8 +1,8 @@
 # Probabilistic Roadmap for motion planning of a fire Truck
 
-## Problem Statement
+## About the project
 
-The goal of this project is to implement a motion planning algorithm for a firetruck that must plan paths to the most important fire to fight, as fires spread, and new fires get started. This project is implemented using the pygame library of python. The environment for the same is simulated as a two dimensional grid world.
+Implement a planner that utilizes two forms of motion planning algorithms to navigate a firetruck through a cluttered, maze-like environment. Test two types of motion planning algorithms, first a combinatorial search algorithm, specifically A* or a variant, and then a Probabilistic RoadMap planner. The firetruck must plan paths to the most important fire to fight, as fires spread, and new fires get started.
 
 ## About the environment
 
@@ -22,10 +22,13 @@ The above problem statement is implemented using two different planners and thei
 ### Combinatorial Planner (A-Star) :
 The combinatorial planner consists of A-Star Algorithm with some additional penalties for reverse. The effect of the penalty is quite visible in the simulation as the truck avoids travel in reverse direction and takes a longer circular route to reach the goal point. Since the environment is simulated in a grid world using pygame, the entire simulation is pixelated, as evident in the video, due to which the truck fails to maintain its rectangular shape most of the times.
 
-Following is an example of the simulation using A-Star Planner:
 
 
-https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/2e16f06a-624d-4a50-bae4-aaa1b9ecfde1
+
+
+https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/a700a45a-7062-4702-af3e-e333ac7007f2
+
+&nbsp;
 
 
 
@@ -34,13 +37,16 @@ The sampling based planner consists of constructing a Probabilistic Roadmap. A t
 
 An example of a probabilistic Road Map is shown below:
 
-![exmaple](https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/57d71186-fe2e-4205-bd2f-84c8173e111e)
+<img width="526" alt="Screenshot 2023-05-27 at 8 42 55 PM" src="https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/fb36ffe8-a17e-4c53-b073-b01af6068be7">
 
-Following is an example of the simulation using Probabilistic Road Map:
+&nbsp;
 
 
 
-https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/c415640e-f241-409d-84b1-d6a75074d177
+https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/57251b0a-f4b9-496a-86f3-bcc1265a69c9
+
+
+
 
 
 
@@ -48,12 +54,20 @@ https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/13463
 
 The extinguished to burned ratio indicates how fast a planner responds to a burning world. As seen in the figure below, the ratio is higher for the PRM Planner than the A-Star Planner, indicating a better suitability for this scenario.
 
-![e_b](https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/27c58dfa-ae9b-4338-a3fb-ed29fa506927)
+<img width="628" alt="Screenshot 2023-05-27 at 8 45 16 PM" src="https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/2f620f44-5a68-4f12-847d-ae7d0cbdb964">
 
 
-Here is a graph on the computational time required for running a 3 minute simulation. As per the data below, the computational resource utilized by the PRM Planner is consistent whereas the A-Star graph seems to vary. However, on running more tests, it was found out that the A-Star Planner consistently used lower resources than the Probabilistic Road Map Planner.
+&nbsp;
 
-![time](https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/8e4fcff2-3441-428b-8f80-68a61584c7b2)
+
+Here is a graph on the computational time required for running a 3 minute simulation. As per the data below, the computational resource utilized by the PRM Planner is lesser than the A-Star. 
+
+<img width="628" alt="Screenshot 2023-05-27 at 8 46 05 PM" src="https://github.com/kt-krutarthtrivedi/Motion-Planner-For-Firetrucks/assets/134632027/3a1a4179-ad63-45a2-855d-23731ef96fba">
+
+
+&nbsp;
+
+From my understanding, I would say that given certain relatively weak conditions on the shape of the free space, PRM is provably probabilistically complete, meaning that as the number of sampled points increases without bound, the probability that the algorithm will not find a path if one exists approaches zero. The rate of convergence depends on certain visibility properties of the free space, where visibility is determined by the local planner. Roughly, if each point can "see" a large fraction of the space, and also if a large fraction of each subset of the space can "see" a large fraction of its complement, then the planner will find a path quickly. Hence, having a PRM will definitely help to find the “complete” solution unless otherwise not possible.
 
 
 # References
